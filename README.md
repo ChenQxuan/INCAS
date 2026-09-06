@@ -129,6 +129,18 @@ CO₂RR 的完整物种集合取决于研究路径。本版不声称包含“全
 
 同一输出目录禁止多个任务同时运行。正常退出会移除 `.running.lock`；强制杀死进程后，确认旧进程已停止再手动移除该锁文件。若候选无法继续增长，程序明确报错；本版不自动改用未选中的旧候选，以保证用户指定的父构型范围。
 
+## 引用
+
+如果使用 CASCAT 产生科研结果，请在论文或报告中引用实际使用的上游方法。当前工作流使用 ACAT 生成与识别吸附构型，并使用 MACE-MH-1 的 `oc20_usemppbe` head 做单点能量与结构优化，因此至少应引用以下三项：
+
+1. **ACAT** — S. Han, S. Lysgaard, T. Vegge and H. A. Hansen, “Rapid mapping of alloy surface phase diagrams via Bayesian evolutionary multitasking,” *npj Computational Materials* **9**, 139 (2023). [DOI: 10.1038/s41524-023-01087-4](https://doi.org/10.1038/s41524-023-01087-4)
+2. **MACE architecture** — I. Batatia, D. P. Kovács, G. N. C. Simm, C. Ortner and G. Csányi, “MACE: Higher order equivariant message passing neural networks for fast and accurate force fields,” *Advances in Neural Information Processing Systems* **35**, 11423–11436 (2022). [arXiv:2206.07697](https://arxiv.org/abs/2206.07697)
+3. **MACE-MH-1 model** — I. Batatia, C. Lin, J. Hart, E. Kasoar, A. M. Elena, S. W. Norwood, T. Wolf and G. Csányi, “Cross Learning between Electronic Structure Theories for Unifying Molecular, Surface, and Inorganic Crystal Foundation Force Fields” (2025). [arXiv:2510.25380](https://arxiv.org/abs/2510.25380)
+
+CASCAT 也依赖 ASE，建议同时引用：A. H. Larsen *et al.*, “The Atomic Simulation Environment—A Python library for working with atoms,” *Journal of Physics: Condensed Matter* **29**, 273002 (2017). [DOI: 10.1088/1361-648X/aa680e](https://doi.org/10.1088/1361-648X/aa680e)
+
+对于非 ACAT 原生 FCC 标签的表面，CASCAT 使用 [AutoAdsorbate](https://github.com/basf/autoadsorbate) 辅助识别表面终止层。该项目目前未提供正式论文引用格式，因此请在方法或软件部分注明 AutoAdsorbate 名称、版本和仓库链接。论文中还应报告 CASCAT 版本、MACE-MH-1、所用 head，以及 `--parents`、`--screen-keep`、`--relax-keep` 和 `--final-keep` 参数。引用不替代相应软件与模型许可证；MACE-MH-1 的许可信息以其[官方模型卡](https://huggingface.co/mace-foundations/mace-mh-1)为准。
+
 ## 验证与限制
 
 ```bash
