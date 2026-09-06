@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cascat"
+version = "0.4.0"
+description = "CASCAT: coverage-aware catalytic metal-surface adsorption configuration search"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy>=1.26,<2", "ase>=3.26,<4", "acat==2.0.3",
+  "autoadsorbate==0.2.5", "mace-torch==0.3.16",
+]
+
+[project.scripts]
+cascat = "cascat.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

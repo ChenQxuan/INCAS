@@ -1,0 +1,4 @@
+interface:
+  display_name: "CASCAT 催化表面构型搜索"
+  short_description: "帮助用户安装本地搜索环境、配置各阶段保留数、运行任务并检查最终构型"
+  default_prompt: "使用 $run-cascat-search 帮我安装 CASCAT，并根据我提供的 POSCAR、吸附分子和数量完成构型搜索。"
