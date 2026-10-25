@@ -1,19 +1,19 @@
 ---
-name: run-cascat-search
-description: Install and operate CASCAT, the ACAT/MACE coverage-aware catalytic metal-surface adsorption configuration workflow, from a user's POSCAR or CONTCAR. Use for local setup, choosing search parameters, running or resuming searches, and checking BEST structures and retained results; not for submitting VASP or changing the search algorithm.
+name: run-incas-search
+description: Install and operate INCAS, the ACAT/MACE incremental coverage-dependent catalytic metal-surface adsorption configuration workflow, from a user's POSCAR or CONTCAR. Use for local setup, choosing search parameters, running or resuming searches, and checking BEST structures and retained results; not for submitting VASP or changing the search algorithm.
 ---
 
-# Run CASCAT search
+# Run INCAS search
 
 Carry the user's requested task through actual execution. For “install and run”, install any missing project dependencies in an appropriate isolated environment, run the requested search, and inspect the outputs. For installation only, stop after verifying the installation; for an explanation or status request, inspect and answer without launching a new calculation. Match the user's language.
 
 ## Locate the project and environment
 
-Find the checkout containing `pyproject.toml` with project name `cascat` and `src/cascat/cli.py`. When this skill is inside the checkout, walk up from this skill directory to find that root; it may differ from the current working directory. If the skill was installed separately, inspect the user's named checkout or working directory. Do not assume a personal absolute path or invent a GitHub URL. If no checkout is available, obtain the source location from the user while checking available Python interpreters.
+Find the checkout containing `pyproject.toml` with project name `incas` and `src/incas/cli.py`. When this skill is inside the checkout, walk up from this skill directory to find that root; it may differ from the current working directory. If the skill was installed separately, inspect the user's named checkout or working directory. Do not assume a personal absolute path or invent a GitHub URL. If no checkout is available, obtain the source location from the user while checking available Python interpreters.
 
-Read the checkout's `README.md` and `pyproject.toml`. For environment creation, installation, or installation errors, read [references/setup.md](references/setup.md) and execute the relevant steps. Use the same verified environment's Python for all subsequent commands, preferably its absolute path with `-m cascat`; activation in one tool call may not persist in another.
+Read the checkout's `README.md` and `pyproject.toml`. For environment creation, installation, or installation errors, read [references/setup.md](references/setup.md) and execute the relevant steps. Use the same verified environment's Python for all subsequent commands, preferably its absolute path with `-m incas`; activation in one tool call may not persist in another.
 
-Verify `python -m cascat run --help` and `python -m cascat molecules`. Use the installed help as the interface authority if a future version differs from this skill. The current interface is 0.4.0; obsolete `ads-search`, `--keep`, `--count`, and `--adsorbate` commands must not be used.
+Verify `python -m incas run --help` and `python -m incas molecules`. Use the installed help as the interface authority if a future version differs from this skill. The current interface is 0.5.0; obsolete `ads-search`, `--keep`, `--count`, and `--adsorbate` commands must not be used.
 
 ## Resolve the requested calculation
 
@@ -45,7 +45,7 @@ If the user omits optional settings, state the defaults briefly and proceed with
 For example, using the verified environment's Python:
 
 ```bash
-python -m cascat run POSCAR --ads CO --n 4 --parents 2 \
+python -m incas run POSCAR --ads CO --n 4 --parents 2 \
   --screen-keep 80% --relax-keep 50% --final-keep 10 --output results/CO
 ```
 
@@ -64,7 +64,7 @@ If a run fails, inspect the actual traceback and last stage. Missing dependencie
 Use the bundled read-only checker with the selected environment:
 
 ```bash
-python /path/to/run-cascat-search/scripts/inspect_results.py /path/to/results/CO
+python /path/to/run-incas-search/scripts/inspect_results.py /path/to/results/CO
 ```
 
 Exit 0 means all expected coverages have complete metadata and consistent result files; exit 1 means incomplete, missing, or inconsistent outputs. The checker does not run MACE or repair data. For an ongoing status request, report incomplete stages as progress, not automatically as a failed calculation.

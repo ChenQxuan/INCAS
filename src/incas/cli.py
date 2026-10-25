@@ -29,7 +29,7 @@ def stage_value(value):
 
 
 def parser():
-    p = argparse.ArgumentParser(description="CASCAT coverage-aware catalytic surface configuration search")
+    p = argparse.ArgumentParser(description="INCAS incremental coverage adsorbate search on catalytic metal surfaces")
     commands = p.add_subparsers(dest="command", required=True)
     commands.add_parser("molecules", help="List available molecular templates")
     run = commands.add_parser("run", help="Search from a clean POSCAR or CONTCAR")

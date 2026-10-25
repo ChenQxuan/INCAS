@@ -1,6 +1,10 @@
-# Validation — 2026-09-06
+# Validation — 2026-10-25
 
-## CASCAT 0.4.0 naming
+## INCAS 0.5.0 naming
+
+Renamed the project from CASCAT to **INCAS — Incremental Coverage Adsorbate Search**; the CASCAT name now belongs to a separate, extended project. The distribution, import module, CLI, and skill are now `incas`, `incas`, `incas`, and `run-incas-search`, respectively. The search algorithm, options, defaults, and output layout are unchanged from CASCAT 0.4.0, and the result checker accepts both INCAS 0.5.x and CASCAT 0.4.x output trees. Sections below this one describe the former names as they were at the time.
+
+## CASCAT 0.4.0 naming (2026-09-06)
 
 Renamed the project to **CASCAT — Coverage-Aware Search for Catalytic Adsorbate Topologies**. The distribution, import module, CLI, and skill are now `cascat`, `cascat`, `cascat`, and `run-cascat-search`, respectively. The former prototype names remain only in historical validation notes and explicit obsolete-interface warnings.
 

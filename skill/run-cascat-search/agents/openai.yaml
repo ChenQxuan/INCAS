@@ -1,4 +1,0 @@
-interface:
-  display_name: "CASCAT Surface Configuration Search"
-  short_description: "Install, run, and inspect CASCAT surface searches"
-  default_prompt: "Use $run-cascat-search to install CASCAT and run a configuration search using my POSCAR, adsorbate, and target molecule count."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "INCAS Surface Configuration Search"
+  short_description: "Install, run, and inspect INCAS surface searches"
+  default_prompt: "Use $run-incas-search to install INCAS and run a configuration search using my POSCAR, adsorbate, and target molecule count."

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only validation of CASCAT 0.4.x output trees."""
+"""Read-only validation of INCAS 0.5.x (and CASCAT 0.4.x) output trees."""
 
 import argparse
 from collections import Counter
@@ -36,8 +36,8 @@ def inspect(root):
         count = config["count"]
         if type(count) is not int or count < 1:
             raise ValueError("search.json count must be a positive integer")
-        if not str(config.get("engine_version", "")).startswith("0.4."):
-            raise ValueError("This checker expects CASCAT 0.4.x output with separate final results and parents")
+        if not str(config.get("engine_version", "")).startswith(("0.4.", "0.5.")):
+            raise ValueError("This checker expects INCAS 0.5.x or CASCAT 0.4.x output with separate final results and parents")
         slab = read(root / "slab.vasp")
     except (OSError, ValueError, KeyError) as error:
         report["errors"].append(str(error))

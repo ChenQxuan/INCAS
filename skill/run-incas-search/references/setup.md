@@ -4,7 +4,7 @@ Use this reference when installation, environment discovery, or installation rep
 
 ## Choose an interpreter
 
-The checked-out `pyproject.toml` is authoritative. CASCAT 0.4.0 requires Python 3.11 or 3.12. Inspect available interpreters and any project `.venv`, and preserve a compatible environment the user explicitly selected. A Python outside the allowed range is not fixed by removing the project's version constraint.
+The checked-out `pyproject.toml` is authoritative. INCAS 0.5.0 requires Python 3.11 or 3.12. Inspect available interpreters and any project `.venv`, and preserve a compatible environment the user explicitly selected. A Python outside the allowed range is not fixed by removing the project's version constraint.
 
 Prefer a project-local `.venv` for a new installation. Do not install into the system Python or modify a shared conda environment implicitly. On macOS/Linux, use the installed `python3.12` or `python3.11`. For Windows, WSL2 is the project's recommended path; native Windows has not been validated. If no compatible interpreter exists, use the user's available environment/package manager to provision an isolated one when authorized, or explain the exact missing interpreter. Do not require conda if venv is available.
 
@@ -17,13 +17,13 @@ python3.12 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install .
 .venv/bin/python -m pip check
-.venv/bin/python -m cascat molecules
-.venv/bin/python -m cascat run --help
+.venv/bin/python -m incas molecules
+.venv/bin/python -m incas run --help
 ```
 
 Use the absolute environment Python after setup. On native Windows, the executable is `.venv/Scripts/python.exe`. A successful command in a different environment does not validate this installation.
 
-Dependencies are declared in the project: NumPy <2, ASE, ACAT 2.0.3, AutoAdsorbate 0.2.5, and mace-torch 0.3.16, with their transitive dependencies. Do not copy the developer's local conda path or blindly pin the historical torch version from `VALIDATION.md`. Check the installed `cascat` CLI has `--ads`, `--n`, `--parents`, `--screen-keep`, `--relax-keep`, and `--final-keep`. If it exposes the old `ads-search`/`--keep` interface, reinstall from the current checkout into the selected environment.
+Dependencies are declared in the project: NumPy <2, ASE, ACAT 2.0.3, AutoAdsorbate 0.2.5, and mace-torch 0.3.16, with their transitive dependencies. Do not copy the developer's local conda path or blindly pin the historical torch version from `VALIDATION.md`. Check the installed `incas` CLI has `--ads`, `--n`, `--parents`, `--screen-keep`, `--relax-keep`, and `--final-keep`. If it exposes the old `ads-search`/`--keep` interface, reinstall from the current checkout into the selected environment.
 
 Dependency installation needs network access unless wheels are already available. MACE uses the `mh-1` model with head `oc20_usemppbe`; its first actual calculation downloads weights if not cached. CLI help and molecule listing do not validate model loading. Describe these as separate milestones.
 
@@ -36,7 +36,7 @@ For “install only”, successful dependency and CLI checks complete the task; 
 If the user requests a demo, the repository includes `examples/POSCAR`. A small actual MACE check is:
 
 ```bash
-.venv/bin/python -m cascat run examples/POSCAR --ads H --n 1 \
+.venv/bin/python -m incas run examples/POSCAR --ads H --n 1 \
   --parents 1 --screen-keep 1 --relax-keep 1 --final-keep 1 \
   --surface 111 --output results/demo-H
 ```
@@ -45,6 +45,6 @@ Choose a fresh output directory if that name already belongs to a different conf
 
 ## Distribution and skill activation
 
-The repository includes this skill in the visible `skill/run-cascat-search/` directory. Users should open the source checkout and explicitly ask their assistant to read `skill/run-cascat-search/SKILL.md` and follow it. Do not assume this directory is automatically discovered as an installed skill. No home-directory installation is required when the assistant reads the skill directly.
+The repository includes this skill in the visible `skill/run-incas-search/` directory. Users should open the source checkout and explicitly ask their assistant to read `skill/run-incas-search/SKILL.md` and follow it. Do not assume this directory is automatically discovered as an installed skill. No home-directory installation is required when the assistant reads the skill directly.
 
 `pip install .` installs the search command, not a global Codex skill. Source distributions retain the skill through `MANIFEST.in`; the Python wheel alone is not a skill installer. Do not copy to a user's global skill directory unless they request global availability. Never invent a public repository URL before the owner publishes one.

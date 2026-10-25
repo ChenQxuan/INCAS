@@ -7,10 +7,10 @@ from pathlib import Path
 from ase.build import fcc111
 from ase.io import write
 
-from cascat import engine
-from cascat.cli import main, parser
-from cascat.molecules import CATALOGUE, configure
-from cascat.retention import retention_count
+from incas import engine
+from incas.cli import main, parser
+from incas.molecules import CATALOGUE, configure
+from incas.retention import retention_count
 
 
 class SearchTests(unittest.TestCase):

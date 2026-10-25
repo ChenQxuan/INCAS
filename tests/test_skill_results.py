@@ -10,7 +10,7 @@ from ase import Atoms
 from ase.io import write
 
 
-CHECKER = Path(__file__).resolve().parents[1] / "skill/run-cascat-search/scripts/inspect_results.py"
+CHECKER = Path(__file__).resolve().parents[1] / "skill/run-incas-search/scripts/inspect_results.py"
 spec = importlib.util.spec_from_file_location("skill_result_checker", CHECKER)
 checker = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(checker)
@@ -23,7 +23,7 @@ class SkillResultTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.round = self.root / "N_1"
         self.round.mkdir()
-        (self.root / "search.json").write_text(json.dumps({"count": 1, "engine_version": "0.4.0"}))
+        (self.root / "search.json").write_text(json.dumps({"count": 1, "engine_version": "0.5.0"}))
         self.atoms = Atoms("CuOH", positions=[[2, 2, 5], [2, 2, 7], [2, 2, 8]], cell=[10, 10, 15], pbc=True)
         self.atoms.info.update(candidate_id=1, relaxed_energy_eV=-10.0, converged=True)
         write(self.root / "slab.vasp", self.atoms[:1], format="vasp")
